@@ -36,13 +36,14 @@ public class Allievo {
 
 	private String email;
 
-	/* Fetch: default
-	 * Cascade:  */
+	/* Fetch: default (eager)
+	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
 	@ManyToOne
 	@JoinColumn(name = "id_società")
 	private Societa societa;
 
-	/* politiche di fetch e di cascade di default */
+	/* Fetch: deafult (lazy load)
+	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
 	@ManyToMany(mappedBy = "allievi")
 	private List<Corso> corsi;
 

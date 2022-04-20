@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,12 +28,15 @@ public class Corso {
 	@Column(nullable = false)
 	private Integer durataInMesi;
 
-	/* politiche di fetch e di cascade di default */
+	/* Fetch: default (lazy load)
+	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
 	@ManyToMany
 	private List<Allievo> allievi;
 
-	/* politiche di fetch e di cascade di default */
-	@ManyToOne
+	/* Fetch: default (eager)
+	 * Cascade: c'è una forte dipendenza del corso dal docente. Inoltre, di solito, non possono esistere corsi con cattedra scoperta. 
+	 * Perciò ha senso che le operazioni di persist di corso si propaghino anche sul suo docente. */
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Docente docente;
 
 	public Corso() {

@@ -22,7 +22,8 @@ public class Societa {
 	
 	/* Fetch: default (eager)
 	 * Cascade: c'è una forte dipendenza dell'indirizzo dalla società, quasi come se ci fosse una composizione tra l'uno e l'altro.
-	 * Ha senso che le operazioni di persist e di remove sulla società si propaghino anche sul suo indirizzo. */
+	 * Nel contesto dell'esercizio, non possono esistere indirizzi che non siano indirizzi di società.
+	 * Perciò ha senso che le operazioni di persist e di remove sulla società si propaghino anche sul suo indirizzo. */
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "id_sede")
 	private Indirizzo sede;

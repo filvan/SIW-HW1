@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +33,9 @@ public class Docente {
 	@Column(nullable = false, unique = true)
 	private String partitaIva;
 	
-	/* politiche di fetch e di cascade di default */
-	@OneToMany(mappedBy = "docente")
+	/* Fetch: generalmente, quando si consultano le informazioni relative a un docente, si vogliono conoscere anche i corsi insegnati
+	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
+	@OneToMany(mappedBy = "docente", fetch = FetchType.EAGER)
 	private List<Corso> corsi;
 	
 	public Docente() {
