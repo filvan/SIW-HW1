@@ -82,4 +82,7 @@ disk/*
 repository/*
 sqliteDb.db
 testdb.db
+
+
 siw-jpa-hw1/bin/META-INF/persistence.xml
+bin/*
