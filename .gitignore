@@ -35,6 +35,7 @@ tmp/
 nohup.out
 
 /bin/
+bin/
 *.class
 
 # Benchmark data
@@ -82,7 +83,3 @@ disk/*
 repository/*
 sqliteDb.db
 testdb.db
-
-
-siw-jpa-hw1/bin/META-INF/persistence.xml
-bin/*
