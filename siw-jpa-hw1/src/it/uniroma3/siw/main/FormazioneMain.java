@@ -6,8 +6,6 @@ import javax.persistence.Persistence;
 
 public class FormazioneMain {
 	
-	// bla bla bla
-
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("training-unit");
 		EntityManager em = emf.createEntityManager();
