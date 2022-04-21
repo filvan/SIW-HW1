@@ -1,8 +1,10 @@
 package it.uniroma3.siw.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,10 +26,10 @@ public class Docente {
 	@Column(nullable = false)
 	private String cognome;
 	
-	@Column(nullable = false)
+	@Column
 	private Date dataDiNascita;
 	
-	@Column(nullable = false)
+	@Column
 	private String luogoDiNascita;
 	
 	@Column(nullable = false, unique = true)
@@ -35,11 +37,11 @@ public class Docente {
 	
 	/* Fetch: generalmente, quando si consultano le informazioni relative a un docente, si vogliono conoscere anche i corsi insegnati
 	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
-	@OneToMany(mappedBy = "docente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "docente", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	private List<Corso> corsi;
 	
 	public Docente() {
-		
+		this.corsi = new ArrayList<Corso>();
 	}
 
 	public Docente(String nome, String cognome, Date dataDiNascita, String luogoDiNascita, String partitaIva, List<Corso> corsi) {
@@ -48,6 +50,7 @@ public class Docente {
 		this.dataDiNascita = dataDiNascita;
 		this.luogoDiNascita = luogoDiNascita;
 		this.partitaIva = partitaIva;
+		this.corsi =  new ArrayList<Corso>();
 		this.corsi = corsi;
 	}
 

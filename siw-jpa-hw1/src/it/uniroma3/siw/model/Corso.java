@@ -22,16 +22,16 @@ public class Corso {
 	@Column(nullable = false)
 	private String nome;
 
-	@Column(nullable = false)
+	@Column
 	private Date dataInizio;
 
-	@Column(nullable = false)
+	@Column
 	private Integer durataInMesi;
 
 	/* Fetch: default (lazy load)
 	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
-	@ManyToMany
-	private List<Allievo> allievi;
+	// @ManyToMany
+	// private List<Allievo> allievi;
 
 	/* Fetch: default (eager)
 	 * Cascade: c'è una forte dipendenza del corso dal docente. Inoltre, di solito, non possono esistere corsi con cattedra scoperta. 
@@ -47,7 +47,7 @@ public class Corso {
 		this.nome = nome;
 		this.dataInizio = dataInizio;
 		this.durataInMesi = durataInMesi;
-		this.allievi = allievi;
+//		this.allievi = allievi;
 		this.docente = docente;
 	}
 
@@ -83,13 +83,13 @@ public class Corso {
 		this.durataInMesi = durataInMesi;
 	}
 
-	public List<Allievo> getAllievi() {
-		return allievi;
-	}
-
-	public void setAllievi(List<Allievo> allievi) {
-		this.allievi = allievi;
-	}
+//	public List<Allievo> getAllievi() {
+//		return allievi;
+//	}
+//
+//	public void setAllievi(List<Allievo> allievi) {
+//		this.allievi = allievi;
+//	}
 
 	public Docente getDocente() {
 		return docente;
@@ -105,7 +105,7 @@ public class Corso {
 		if (this.getNome().equals(that.getNome()))
 			if (this.getDataInizio().equals(that.getDataInizio()))
 				if (this.getDurataInMesi().equals(that.getDurataInMesi()))
-					if (this.getAllievi().equals(that.getAllievi()))
+//					if (this.getAllievi().equals(that.getAllievi()))
 						if (this.getDocente().equals(that.getDocente()))
 							return true;
 		return false;
@@ -116,7 +116,7 @@ public class Corso {
 		return 31 * this.getNome().hashCode() 
 				+ this.getDataInizio().hashCode() 
 				+ this.getDurataInMesi().hashCode() 
-				+ this.getAllievi().hashCode()
+//				+ this.getAllievi().hashCode()
 				+ this.getDocente().hashCode();
 	}
 
@@ -132,7 +132,7 @@ public class Corso {
 		builder.append(", durataInMesi=");
 		builder.append(this.getDurataInMesi());
 		builder.append(", allievi=");
-		builder.append(this.getAllievi());
+//		builder.append(this.getAllievi());
 		builder.append(", docente=");
 		builder.append(this.getDocente());
 		builder.append("]");

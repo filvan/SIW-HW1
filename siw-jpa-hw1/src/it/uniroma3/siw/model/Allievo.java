@@ -44,7 +44,7 @@ public class Allievo {
 
 	/* Fetch: deafult (lazy load)
 	 * Cascade: default (non ritengo strettamente necessaria l'applicazione di eventi in cascata) */
-	@ManyToMany(mappedBy = "allievi")
+	@ManyToMany( /* mappedBy = "allievi" */ )
 	private List<Corso> corsi;
 
 	public Allievo() {
